@@ -220,3 +220,6 @@ __marimo__/
 !.pixi/config.toml
 
 data/
+
+src/configs/*
+!src/configs/base.json

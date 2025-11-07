@@ -24,3 +24,5 @@ opencv-python-headless = ">=4.12.0.88, <5"
 scipy = ">=1.15.3, <2"
 torch = { version = ">=2.9.0, <2.10", index = "https://download.pytorch.org/whl/cu129" }
 torchvision = { version = ">=0.24.0, <0.25", index = "https://download.pytorch.org/whl/cu129" }
+ffmpeg-python = ">=0.2.0, <0.3"
+pathlib = ">=1.0.1, <2"
