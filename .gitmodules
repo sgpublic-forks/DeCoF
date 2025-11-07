@@ -1,0 +1,10 @@
+[submodule "download/real/MSR-VTT"]
+	path = download/real/MSR-VTT
+	url = https://huggingface.co/datasets/VLM2Vec/MSR-VTT
+[submodule "download/real/MSVD"]
+	path = download/real/MSVD
+	url = https://huggingface.co/datasets/VLM2Vec/MSVD
+[submodule "download/fake"]
+	path = download/fake
+	url = https://huggingface.co/datasets/mhmzx/GVFdatasets/mhmzx/GVF
+	branch = fakes

@@ -1,3 +1,5 @@
+> This is just a fork designed to optimize the experiment reproduction process.
+
 # Detecting AI-Generated Video via Frame Consistency
 <div align="center">
     <a href='https://arxiv.org/abs/2402.02085'><img src='https://img.shields.io/badge/ArXiv-2402.02085-red'></a>

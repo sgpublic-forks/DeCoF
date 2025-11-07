@@ -4,5 +4,5 @@
     "batch_size":32,
     "image_size":224,
     "n_frames":8,
-    "subdatasets_name":""
+    "subdatasets_name":"text2video_zero"
 }
