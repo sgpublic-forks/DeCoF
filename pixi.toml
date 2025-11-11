@@ -6,6 +6,18 @@ version = "0.1.0"
 
 [tasks]
 
+[tasks.create_dataset]
+args = ["subset"]
+cmd = ["python", "./src/create_dataset.py", "{{ subset }}"]
+
+[tasks.train]
+args = [
+    "config",
+    { "arg" = "session_name", "default" = "default" }
+]
+cmd = ["python", "./src/train.py", "-n", "{{ session_name }}", "{{ config }}"]
+
+
 [dependencies]
 python = ">=3.12,<3.13"
 cuda-toolkit = ">=12.9,<12.10"

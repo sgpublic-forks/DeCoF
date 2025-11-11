@@ -49,14 +49,13 @@ def create_dataset_for_phase(subdatasets_name, phase, save_to):
 
 
 def main(args):
-    dataset_config = load_json(str(ROOT / f'./src/configs/{args.config}.json'))
-    subdatasets_name = dataset_config['subdatasets_name']
+    subdatasets_name = args.sub
     assert subdatasets_name in fake_sets
     create_dataset(subdatasets_name)
 
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument(dest='config')
+    parser.add_argument(dest='sub')
     args=parser.parse_args()
     main(args)

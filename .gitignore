@@ -223,3 +223,5 @@ data/
 
 src/configs/*
 !src/configs/base.json
+
+output/

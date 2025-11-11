@@ -16,8 +16,9 @@ def split_video(video_path: str, save_path: Path, filenames='%03d.jpg', range=32
     stream = (
         ffmpeg
         .input(video_path)
-        .filter('select', f'lte(n,{range - 1})')     # 只取前32帧
-        .filter('select', f'not(mod(n,{range / count}))')  # 每隔4帧取1帧
-        .output(path.join(save_path, filenames), vsync='0')
+        .filter('select', f'lte(n,{range - 1})')
+        .filter('select', f'not(mod(n,{range / count}))')
+        .filter('crop', 'min(iw,ih)', 'min(iw,ih)', '(iw-min(iw,ih))/2', '(ih-min(iw,ih))/2')
+        .output(path.join(save_path, filenames), vsync='0', start_number=0)
     )
     ffmpeg.run(stream, overwrite_output=True, quiet=True)

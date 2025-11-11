@@ -1,18 +1,21 @@
+from pathlib import Path
+
+import argparse
 import os
+from datetime import datetime
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import numpy as np
-import os
-from utils.data import Dataset
-from utils.scheduler import LinearDecayLR
 from sklearn.metrics import roc_auc_score, accuracy_score
-import argparse
-from utils.logs import log
-from utils.funcs import load_json
-from datetime import datetime
 from tqdm import tqdm
+
 from model import Detector
+from utils.data import Dataset
+from utils.funcs import load_json
+from utils.logs import log
+from utils.scheduler import LinearDecayLR
+
 
 def compute_accuray(pred,true):
     pred_idx=pred.argmax(dim=1).cpu().data.numpy()
@@ -20,7 +23,7 @@ def compute_accuray(pred,true):
     return sum(tmp)/len(pred_idx)
 
 def main(args):
-    cfg=load_json(args.config)
+    cfg = load_json(str(Path(__file__).parent / f'./configs/{args.config}.json'))
 
     
     torch.backends.cudnn.deterministic = True
@@ -72,9 +75,8 @@ def main(args):
 
     now=datetime.now()
     save_path='./output/{}_'.format(args.session_name)+now.strftime(os.path.splitext(os.path.basename(args.config))[0])+'_'+now.strftime("%m_%d_%H_%M_%S")+'/'
-    os.mkdir(save_path)
-    os.mkdir(save_path+'weights/')
-    os.mkdir(save_path+'logs/')
+    os.makedirs(save_path+'weights/', exist_ok=True)
+    os.makedirs(save_path+'logs/', exist_ok=True)
     logger = log(path=save_path+"logs/", file="losses.logs")
 
     criterion=nn.CrossEntropyLoss()
